@@ -12,6 +12,25 @@ output: 3
 */
 
 var minimalReduction = function(n) {
+    let minCount = -1;
+    if (n === 0)
+        return 0;
+    else {
+        if (n % 3 === 0) {
+            let count = minimalReduction(n / 3) + 1;
+            if (count < minCount || minCount === -1)
+                minCount = count;
+        }
+        if (n % 4 === 0) {
+            let count = minimalReduction(n / 4) + 1;
+            if (count < minCount || minCount === -1)
+                minCount = count;
+        }
+        let count = minimalReduction(n - 1) + 1;
+        if (count < minCount || minCount === -1)
+            minCount = count;
+    }
+    return minCount;
 
 };
 
