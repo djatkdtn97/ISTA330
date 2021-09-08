@@ -15,34 +15,22 @@ output: 4 because the following partition has the highest number of balanced sub
 */
 
 var maxBalanceNumber = function(input) {
-  string s;
-  int i,j,n;
-  cout<<"Enter string: ";
-  cin>>s;
-  n=s.size();
-  ll dp[n];
-  dp[n-1]=0;
-  for(i=n-2;i>=0;i--){
-    ll ans=0;
-    ll c1=0;
-    ll c2=0;
-    dp[i]=0;
-    for(j=i;j<n;j++){
-      if(s[j]=='a')c1++;
-      else
-      c2++;
-      if(c1==c2){
-        if(j==n-1)
-dp[i]=max(dp[i],(ll)1);
-else
-dp[i]=max(dp[i],1+dp[j+1]);
+  if (n == 0)
+    return 0;
+  let b = 0, a = 0;
+  let ans = 0;
+  for(let i = 0; i < n; i++) {
+    if (str[i] == 'b') {
+      b++;
+    }
+    else if (str[i] == 'a') {
+      a++
+    }
+    if (r == l) {
+      ans++;
+    }
+  }
+  return ans;
 }
-}
-}
-ll ans=0;
-for(i=0;i<n;i++)
-ans=max(ans,dp[i]);
-cout<<"Max no of balanced substring in a partition is: "<<ans;
-
-
-};
+let str = input;
+let n = input.length;
