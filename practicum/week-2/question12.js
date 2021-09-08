@@ -31,6 +31,6 @@ var maxBalanceNumber = function(input) {
     }
   }
   return ans;
-};
+}
 let str = input;
 let n = input.length;
