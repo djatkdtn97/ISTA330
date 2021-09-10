@@ -10,6 +10,28 @@ Example: input: cookies = [3, 5, 8] , extraCookies = 8
  */
 
  var canGetEqualCookies = function(cookies, extraCookies) {
-     
-    
- };
+        //  var largest = 0;
+        //  for (i = 0; i < largest; i++) {
+        //          if (cookies[i]>largest) {
+        //                  var largest = array[i];
+        //         }
+        // }
+        //  var cloneArray = cookies.slice();
+        //  var i = largest;
+        //  cloneArray.splice(i,1);
+        var cloneArray = cookies.slice();
+        const removeMax = numbers => {
+                const max = Math.max(...numbers)
+                return numbers.filter(number => number !== max)
+        }
+        removeMax(cloneArray.cookies)
+        const sum = cloneArray.cookies.reduce(add,0);
+        function add (accumulator, a) {
+                return accumulator + a;
+        }
+        if (sum == extraCookies) {
+                return true
+        } else {
+                return false
+        }
+ }
