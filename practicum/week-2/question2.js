@@ -19,19 +19,33 @@ Example: input: cookies = [3, 5, 8] , extraCookies = 8
         //  var cloneArray = cookies.slice();
         //  var i = largest;
         //  cloneArray.splice(i,1);
-        var cloneArray = cookies.slice();
-        const removeMax = numbers => {
-                const max = Math.max(...numbers)
-                return numbers.filter(number => number !== max)
+        // var cloneArray = cookies.slice();
+        // const removeMax = numbers => {
+        //         const max = Math.max(...numbers)
+        //         return numbers.filter(number => number !== max)
+        // }
+        // removeMax(cloneArray.cookies)
+        // const sum = cloneArray.cookies.reduce(add,0);
+        // function add (accumulator, a) {
+        //         return accumulator + a;
+        // }
+        // if (sum == extraCookies) {
+        //         return true;
+        // } else {
+        //         return false;
+        // }
+        const newCookie = [...cookies];
+        const MaxNum = Math.max(cookies);
+        newCookie.splice(MaxNum)
+        let sum = 0;
+        for (let i = 0; i <newCookie.length; i++) {
+                sum += newCookie[i];
         }
-        removeMax(cloneArray.cookies)
-        const sum = cloneArray.cookies.reduce(add,0);
-        function add (accumulator, a) {
-                return accumulator + a;
+        var subtractNum = MaxNum - sum;
+        if (subtractNum === extraCookies) {
+                print('true')
         }
-        if (sum == extraCookies) {
-                return true;
-        } else {
-                return false;
-        }
+
+
+
  }
