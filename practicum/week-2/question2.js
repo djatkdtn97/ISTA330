@@ -34,17 +34,17 @@ Example: input: cookies = [3, 5, 8] , extraCookies = 8
         // } else {
         //         return false;
         // }
-        const newCookie = [...cookies];
-        const MaxNum = Math.max(cookies);
-        newCookie.splice(MaxNum)
-        let sum = 0;
-        for (let i = 0; i <newCookie.length; i++) {
-                sum += newCookie[i];
-        }
-        var subtractNum = MaxNum - sum;
-        if (subtractNum === extraCookies) {
-                print('true')
-        }
+        // const newCookie = [...cookies];
+        // const MaxNum = Math.max(cookies);
+        // newCookie.splice(MaxNum)
+        // let sum = 0;
+        // for (let i = 0; i <newCookie.length; i++) {
+        //         sum += newCookie[i];
+        // }
+        // var subtractNum = MaxNum - sum;
+        // if (subtractNum === extraCookies) {
+        //         print('true')
+        // }
 
 
 
