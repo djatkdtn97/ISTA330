@@ -13,7 +13,7 @@ Example: input: [-12,3,-1,5,-2,1,-7]
          var highestSum = 0;
          let highestSum = 0;
          let subarraySum = 0;
-         input.forEach(function(item) {
+         input.forEach(function(item){
                  subarraySum += item;
                  highestSum = Math.max(highestSum, subarraySum);
                  if (subarraySum < 0) {
