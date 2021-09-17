@@ -9,18 +9,15 @@ Example: input: [-12,3,-1,5,-2,1,-7]
                  because [3,-1,5] has the largest sum.
           */
 
- var largestSubarray = function(input) {
-         var highestSum = 0;
-         let highestSum = 0;
-         let subarraySum = 0;
-         input.forEach(function(item){
-                 subarraySum += item;
-                 highestSum = Math.max(highestSum, subarraySum);
-                 if (subarraySum < 0) {
-                         subarraySum = 0;
-                 }
-         });
-         return highestSum;
-     
-    
- };
+var largestSubarray = function(input) {
+        let highestSum = 0;
+        let subarraySum = 0;
+        input.forEach(function (item) {
+                subarraySum += item; 
+                highestSum = Math.max(highestSum, subarraySum); 
+                if (subarraySum < 0) {
+                        subarraySum = 0;
+                }
+        })
+        return highestSum;
+}
