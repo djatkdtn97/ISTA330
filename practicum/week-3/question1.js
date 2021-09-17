@@ -10,22 +10,18 @@ is at least twice as much as every other number
 */
 
 var largestNumberIsAtLeastTwice = function(input) {
-        let largeNum = Math.max(...input);
-        console.log(input);
-        let index = input.indexOf(largeNum);
-        input.splice(index, largeNum);
-        console.log(input);
-        console.log(largeNum);
-        let isTwice = true;
-        input.forEach(number => {
-                console.log(number * 2);
-                console.log(number * 2 >= largeNum);
-                if(number * 2 >= largeNum){
-                        console.log("should return false");
-                        isTwice = false;
+        let mxNumber = Math.max(...input);
+        let mxIdx = input.indexOf(mxNumber );
+        if (input.length < 2) {
+                return true;
+        }
+        for (let i = 0; i < input.length; i++) {
+                if (input[i] === mxNumber ) {
+                        continue;
                 }
-                
-        });
-        return isTwice;
-   
+                if (input[i] * 2 > mxNumber ) {
+                        return false;
+                }
+        }
+        return true;
 };
