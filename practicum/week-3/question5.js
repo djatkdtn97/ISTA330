@@ -16,8 +16,15 @@ input: [12, 6, 2, 2, 2, 0]
 output: true
 */
 
-var isMonotonic = function(input) {
-
+var isMonotonic = function (input) {
+    let is_ascending = true, is_descending = true;
+    for (let i = 1; i < input.length; i++) {
+        if (input[i-1] > input[i])
+            is_ascending = false;
+        if (input[i-1] < input[i])
+            is_descending = false;
+    }
+    return is_ascending || is_descending;
 };
 
 console.log('hi');
