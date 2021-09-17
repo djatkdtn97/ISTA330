@@ -29,7 +29,7 @@ var minPairs = function(input){
         if(Math.abs(input[j] - input[i]) == minDiff){
             if(input[i] < input[j])
             result.push([input[i],input[j]]);
-            else result.push([input[j],input[i]]);
+            else result.push([input[i]], input[j]);
         }
     }
     return result;
