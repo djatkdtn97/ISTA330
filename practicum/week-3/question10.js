@@ -32,5 +32,5 @@ var minPairs = function(input){
                 else result.push([input[j],input[i]]);
         }
     }
-    return result.sort((a,b) => a[0] <= b[0]);
+    return result.sort((a,b) => a[0] - b[0]);
 }
