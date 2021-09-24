@@ -2,8 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        img {
+            width: 200px;
+            height: 200px;
+            padding: 2px;
+            border: 1px #ccc solid;
+        }
+    </style>
 </head>
 <body>
     <div id="question">
@@ -18,14 +27,6 @@
 
     </div>
     <script>
-        /*
-           Using the array flowers below, 
-           display the flowers. Use the div 'flowersDiv'.
-           You should display the flowers in two rows,
-           each row containing 4 flowers.
-           For each flower, you should show the image
-           and under the image display its name.
-        */
        class Flower {
            constructor(name, pictureName) {
                this.name = name;
@@ -51,6 +52,62 @@
              rose,
              waterlily
        ];
+       // Function to compare two flower objects, will be later used in sorting the arrays
+        function compare( a, b ) {
+            // By name sorting
+            if ( a.name < b.name ){
+                return -1;
+            }
+            if ( a.name > b.name ){
+                return 1;
+            }
+            return 0;
+        }
+        // getting all images tds
+        let images = document.getElementById("flowersDiv").getElementsByTagName("td");
+        // Populating the images are per array (in order)
+        function populate(array) {
+            flowersDiv = document.getElementById("flowersDiv")
+            table = ""
+            table += "<table>";
+            for(i=0; i<flowers.length; i++) {
+                if(i%4 === 0 ) {
+                        table += "\n<tr>";
+                }
+                table += "\n<td id=" +  i + "><img src='" + array[i].picture + "'><br>"+ array[i].name + "</td>";  
+                if(i%4 === 3) {
+                    table += "</tr>";
+                }
+            }
+            table += "\n</table>";
+            flowersDiv.innerHTML = table;
+            // Setting click event of the arrays
+            setEvent();
+        }
+        // Setting event for each td
+        function setEvent() {
+            for(let image of images) {
+                image.addEventListener("click", function() {
+                    // getting the index of clicked image in current flowers array
+                    index = this.getAttribute("id")
+                    // Get the FLower object out of that array or Getting the clicked Flower array
+                    item = flowers[index];
+                    // Sort the whole flowers array
+                    flowers = flowers.sort(compare);
+                    // Now get the new index of the clicked object
+                    index = flowers.indexOf(item);
+                    // Split the array by that index
+                    var p1 = flowers.slice(0,index).sort(compare);
+                    var p2 = flowers.slice(index).sort(compare);
+                    // Then recreate the flowers array starting from clicked element in order by concatenating two parts
+                    flowers = p2.concat(p1);
+                    // Populate the DOM with new flowers array
+                    populate(flowers)
+                });
+            }
+        }
+        // Populating the DOM with initial flowers array
+        populate(flowers)
     </script>
 </body>
 </html>
