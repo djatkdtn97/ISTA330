@@ -59,23 +59,6 @@
 
     </div>
     <script>
-        /*
-           1. Display the flowers as per question 1.
-           2. Add the following functionality to the page:
-              When users click on an image, the images should be 
-              reorganized using the following rule:
-              The flowers that has been clicked goes to the first position in
-              the first row. The next position in the first row will
-              be the flower whose name is alphabeticlly right after the
-              name of the first one and so on for the other flowers.
-
-              So, for example if a user clicks on the flower lily,
-              then the flowers should be rearranged as:
-
-         lily       rose           sunflower   tulip
-        waterlily   cherryblossom  daffodil    daisy 
-        
-        */
         class Flower {
             constructor(name, pictureName) {
                 this.name = name;
@@ -90,18 +73,74 @@
         let tulip = new Flower('Tulip', 'https://habahram.blob.core.windows.net/flowers/tulip.jpg');
         let rose = new Flower('Rose', 'https://habahram.blob.core.windows.net/flowers/rose.jpg');
         let waterlily = new Flower('Water lily', 'https://habahram.blob.core.windows.net/flowers/waterlily.jpg');
-
+        
         let flowers = [
-            daffodil,
-            cherryblossom,
-            lily,
-            daisy,
-            sunflower,
-            tulip,
-            rose,
-            waterlily
+              daffodil,
+              cherryblossom,
+              lily,
+              daisy,
+              sunflower,
+              tulip,
+              rose,
+              waterlily
         ];
-    </script>
+        // Function to compare two flower objects, will be later used in sorting the arrays
+         function compare( a, b ) {
+             // By name sorting
+             if ( a.name < b.name ){
+                 return -1;
+             }
+             if ( a.name > b.name ){
+                 return 1;
+             }
+             return 0;
+         }
+         // getting all images tds
+         let images = document.getElementById("flowersDiv").getElementsByTagName("td");
+         // Populating the images are per array (in order)
+         function populate(array) {
+             flowersDiv = document.getElementById("flowersDiv")
+             table = ""
+             table += "<table>";
+             for(i=0; i<flowers.length; i++) {
+                 if(i%4 === 0 ) {
+                         table += "\n<tr>";
+                 }
+                 table += "\n<td id=" +  i + "><img src='" + array[i].picture + "'><br>"+ array[i].name + "</td>";  
+                 if(i%4 === 3) {
+                     table += "</tr>";
+                 }
+             }
+             table += "\n</table>";
+             flowersDiv.innerHTML = table;
+             // Setting click event of the arrays
+             setEvent();
+         }
+         // Setting event for each td
+         function setEvent() {
+             for(let image of images) {
+                 image.addEventListener("click", function() {
+                     // getting the index of clicked image in current flowers array
+                     index = this.getAttribute("id")
+                     // Get the FLower object out of that array or Getting the clicked Flower array
+                     item = flowers[index];
+                     // Sort the whole flowers array
+                     flowers = flowers.sort(compare);
+                     // Now get the new index of the clicked object
+                     index = flowers.indexOf(item);
+                     // Split the array by that index
+                     var p1 = flowers.slice(0,index).sort(compare);
+                     var p2 = flowers.slice(index).sort(compare);
+                     // Then recreate the flowers array starting from clicked element in order by concatenating two parts
+                     flowers = p2.concat(p1);
+                     // Populate the DOM with new flowers array
+                     populate(flowers)
+                 });
+             }
+         }
+         // Populating the DOM with initial flowers array
+         populate(flowers)
+     </script>
 </body>
 
 </html>
