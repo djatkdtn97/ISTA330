@@ -84,9 +84,7 @@
               rose,
               waterlily
         ];
-        // Function to compare two flower objects, will be later used in sorting the arrays
          function compare( a, b ) {
-             // By name sorting
              if ( a.name < b.name ){
                  return -1;
              }
@@ -95,9 +93,7 @@
              }
              return 0;
          }
-         // getting all images tds
          let images = document.getElementById("flowersDiv").getElementsByTagName("td");
-         // Populating the images are per array (in order)
          function populate(array) {
              flowersDiv = document.getElementById("flowersDiv")
              table = ""
@@ -113,34 +109,23 @@
              }
              table += "\n</table>";
              flowersDiv.innerHTML = table;
-             // Setting click event of the arrays
              setEvent();
          }
-         // Setting event for each td
          function setEvent() {
              for(let image of images) {
                  image.addEventListener("click", function() {
-                     // getting the index of clicked image in current flowers array
                      index = this.getAttribute("id")
-                     // Get the FLower object out of that array or Getting the clicked Flower array
                      item = flowers[index];
-                     // Sort the whole flowers array
                      flowers = flowers.sort(compare);
-                     // Now get the new index of the clicked object
                      index = flowers.indexOf(item);
-                     // Split the array by that index
                      var p1 = flowers.slice(0,index).sort(compare);
                      var p2 = flowers.slice(index).sort(compare);
-                     // Then recreate the flowers array starting from clicked element in order by concatenating two parts
                      flowers = p2.concat(p1);
-                     // Populate the DOM with new flowers array
                      populate(flowers)
                  });
              }
          }
-         // Populating the DOM with initial flowers array
          populate(flowers)
      </script>
 </body>
-
 </html>
