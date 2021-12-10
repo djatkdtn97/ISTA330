@@ -26,6 +26,7 @@ function allPartitions(input){
   }
   let result = allPartitions(input.slice(0, -1));
   let n = result.length;
+  //deep copy the result array
   let newPartitions = JSON.parse(JSON.stringify(result));
   for(let i = 0; i < n; i++) {
     
@@ -36,26 +37,23 @@ function allPartitions(input){
   }
   return result.concat(newPartitions);  
 }
+// Here is how you can use the utility function allPartitions:
 for (let partition of allPartitions("aba")) {
   console.log(partition);
 }
 
 var maxBalanceNumber = function(input) {
-  const allTheStrings = [];
-  for(let i = 0; i < input.length; i++){
-    allTheStrings.push(input.slice(i, input.length));
-  }
-  let count = 0;
-  for(let i = 0; i < allTheStrings.length; i++){
-    let A = 'a';
-    let B = 'b';
-    let a = allTheStrings[i].split(A).length-1;
-    let b = allTheStrings[i].split(B).length-1;
-    if (a==b){
-      count++;
+  let numcount = 0;
+  let result = 0;
+  for (let i = 0; i < input.length; i++) {
+    if(input[i] == "a"&&numcount<=0){
+      numcount++;
+    }else if(input[i] == "b"&&numcount>=0){
+        numcount--;
+    }
+    if(numcount == 0){
+      result++;
     }
   }
-  return count;
+  return result
 };
-let a = "aaabbbab";
-console.log(maxBalanceNumber(a));
