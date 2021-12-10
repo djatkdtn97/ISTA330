@@ -9,10 +9,12 @@ output: 'hello'
 */
 
 var suffleString = function(input, shuffleIndices) {
-    let result = '';
-    for (let i = 0; i < shuffleIndices.length; i++) {
-        result += input[shuffleIndices[i]];
+    const returnArray = [];
+    for(let i = 0; i < shuffleIndices.length; i++) {
+        let index = shuffleIndices[i];
+        returnArray[index] = input.charAt(i);
     }
-    return result;
-
+    return returnArray.join("");
 };
+
+console.log(suffleString('emelwco',[1,5,6,2,0,3,4]))

@@ -6,11 +6,12 @@ output: 3
 */
 
 var median = function(input) {
-    input.sort();
-    if (input.length % 2 === 1) {
-        return input[Math.floor(input.length / 2)];
+    const tempArray = input.sort();
+    let size = tempArray.length;
+    let mid = Math.ceil(size/2);
+    if(size % 2 == 1) {
+        return tempArray[mid-1];
     } else {
-        return (input[input.length / 2] + input[(input.length / 2) - 1]) / 2;
+        return (tempArray[mid] + tempArray[mid-1]) / 2
     }
-
 };
