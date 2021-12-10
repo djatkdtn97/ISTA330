@@ -10,16 +10,14 @@ The letters in A are guaranteed distinct, and all characters in A and B are lett
  output: 3
 */
 
-var howManyCommon = function (A, B) {
-    let count = 0;
-    for (let i = 0; i < B.length; i++) {
-        let found = false;
-        for (let j = 0; j < A.length; j++) {
-            if (B[i] === A[j])
-                found = true;
+var howManyCommon = function(A, B) {
+    let intersection = 0;
+    for (var i = 0; i < A.length; i++) {
+        for (var j = 0; j < B.length; j++) {
+            if (A[i]==B[j]){
+                intersection+=1;
+            }
         }
-        if (found)
-            ++count;
     }
-    return count;
+    return intersection;
 };
