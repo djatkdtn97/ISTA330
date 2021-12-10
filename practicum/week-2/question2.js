@@ -9,24 +9,24 @@ Example: input: cookies = [3, 5, 8] , extraCookies = 8
          and therfore each of the three kids will get 8 cookies.
  */
 
-         var canGetEqualCookies = function(cookies, extraCookies) {
-              let cookienum = extraCookies;
-              let child_largestCookieNum = 0;
-              for(var i=0; i<cookies.length; i++){
-                      if(cookies[i]>child_largestCookieNum){
-                              child_largestCookieNum=cookies[i];
-                      }
+var canGetEqualCookies = function(cookies, extraCookies) {
+       let cookienum = extraCookies;
+       let child_largestCookieNum = 0;
+       for(var i=0; i<cookies.length; i++){
+              if(cookies[i]>child_largestCookieNum){
+                     child_largestCookieNum=cookies[i];
               }
-              for(var i=0; i<cookies.length; i++){
-                      if(child_largestCookieNum>cookies[i]){
-                              let need_cookie = child_largestCookieNum-cookies[i];
-                              if(cookienum>=need_cookie){
-                                      cookienum-=need_cookie;
-                              }
-                              else{
-                                      return false;
-                              }
-                      }
+       }
+       for(var i=0; i<cookies.length; i++){
+              if(child_largestCookieNum>cookies[i]){
+                     let need_cookie = child_largestCookieNum-cookies[i];
+                     if(cookienum>=need_cookie){
+                            cookienum-=need_cookie;
+                     }
+                     else{
+                            return false;
+                     }
               }
-              return true;
-       };
+       }
+       return true;
+};
