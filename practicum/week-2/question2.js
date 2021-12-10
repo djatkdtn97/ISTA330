@@ -10,23 +10,22 @@ Example: input: cookies = [3, 5, 8] , extraCookies = 8
  */
 
 var canGetEqualCookies = function(cookies, extraCookies) {
-       const tempArray = cookies;
-       let maxNum = 0;
-       let extra = extraCookies;
-       for(let i = 0; i < cookies.length; i++) {
-              if (cookies[i] > maxNum) {
-                     maxNum = cookies[i];
+       let cookienum = extraCookies;
+       let child_largestCookieNum = 0;
+       for(var i=0; i<cookies.length; i++){
+              if(cookies[i]>child_largestCookieNum){
+                     child_largestCookieNum=cookies[i];
               }
        }
-       for(let i = 0; i < tempArray.length; i++) {
-              while(tempArray[i] < maxNum && extra > 0) {
-                     tempArray[i]++;
-                     extra--;
-              }
-       }
-       for(let i = 0; i < tempArray.length;i++){
-              if(tempArray[i] < maxNum) {
-                     return false;
+       for(var i=0; i<cookies.length; i++){
+              if(child_largestCookieNum>cookies[i]){
+                     let need_cookie = child_largestCookieNum-cookies[i];
+                     if(cookienum>=need_cookie){
+                            cookienum-=need_cookie;
+                     }
+                     else{
+                            return false;
+                     }
               }
        }
        return true;
